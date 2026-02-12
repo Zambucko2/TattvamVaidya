@@ -13,6 +13,7 @@ import {
   Calendar,
   ExternalLink
 } from 'lucide-react';
+import myImage from '/home/zambucko/website/TattvamVaidya/media/mypicture.jpg';
 
 function App() {
   const [activeSection, setActiveSection] = useState('home');
@@ -128,7 +129,7 @@ function App() {
             <div className="space-y-6">
               <div className="w-80 h-80 bg-slate-700 rounded-xl mx-auto lg:mx-0 flex items-center justify-center">
                 <User size={120} className="text-slate-500" />
-                <span className="absolute text-slate-400 text-sm mt-32">Photo Placeholder</span>
+                <span className="absolute text-slate-400 text-sm mt-32"><img src={myImage} alt='Picture of Tattvam Vaidya'/></span>
               </div>
             </div>
             <div className="space-y-6">
