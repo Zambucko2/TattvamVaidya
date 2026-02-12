@@ -1,1 +1,1 @@
-Link: https://zambucko2.github.io/tattvamvaidya.github.io/
+Link: https://zambucko2.github.io/TattvamVaidya/
