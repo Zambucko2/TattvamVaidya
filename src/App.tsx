@@ -127,9 +127,12 @@ function App() {
           </h2>
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <div className="w-80 h-80 bg-slate-700 rounded-xl mx-auto lg:mx-0 flex items-center justify-center">
-                <User size={120} className="text-slate-500" />
-                <span className="absolute text-slate-400 text-sm mt-32"><img src={myImage} alt='Picture of Tattvam Vaidya'/></span>
+              <div className="w-81 h-81 mx-auto lg:mx-0">
+                <img 
+                  src={myImage} 
+                  alt="Picture of Me"
+                  className="w-full h-full object-cover rounded-xl shadow-lg"
+                />
               </div>
             </div>
             <div className="space-y-6">
