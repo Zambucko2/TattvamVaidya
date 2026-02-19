@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   base: '/TattvamVaidya/',
   build: {
-    outDir: 'docs/',
+    outDir: 'docs',
   },
   plugins: [react()],
   optimizeDeps: {
