@@ -13,7 +13,7 @@ import {
   Calendar,
   ExternalLink
 } from 'lucide-react';
-import myImage from '/home/zambucko/website/TattvamVaidya/media/mypicture.jpg';
+import myImage from '/media/mypicture.jpg';
 
 function App() {
   const [activeSection, setActiveSection] = useState('home');
