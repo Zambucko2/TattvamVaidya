@@ -28,17 +28,18 @@ html {
   width: 8px;
 }
 
+/* Custom scrollbar - Switched to Zinc (Cool Dark) */
 ::-webkit-scrollbar-track {
-  background: #1e293b;
-}
+  background: #09090b; /* Zinc-950 */
+}s
 
 ::-webkit-scrollbar-thumb {
-  background: #475569;
+  background: #27272a; /* Zinc-800 */
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #64748b;
+  background: #3f3f46; /* Zinc-700 */
 }
 
 /* Ensure good contrast for text */
@@ -47,11 +48,11 @@ body {
   line-height: 1.6;
 }
 
-/* Focus states for accessibility */
+/* Updated Focus states for Red/White theme */
 button:focus,
 input:focus,
 textarea:focus {
-  outline: 2px solid #3b82f6;
+  outline: 2px solid #e11d48; /* Rose-600 */
   outline-offset: 2px;
 }
 
@@ -64,9 +65,10 @@ textarea:focus {
   transform: translateY(-5px);
 }
 
-/* Gradient text helper */
+/* Updated Gradient text helper */
 .gradient-text {
-  background: linear-gradient(135deg, #3b82f6 0%, #14b8a6 100%);
+  /* Soft Red to Cool White/Silver gradient */
+  background: linear-gradient(135deg, #fb7185 0%, #f4f4f5 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

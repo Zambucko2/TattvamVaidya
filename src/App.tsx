@@ -11,7 +11,10 @@ import {
   ChevronDown,
   MapPin,
   Calendar,
-  ExternalLink
+  ExternalLink,
+  Eye,
+  Heart,
+  Box
 } from 'lucide-react';
 import myImage from '/media/mypicture.jpg';
 
@@ -48,13 +51,48 @@ function App() {
     }
   };
 
+  const mediaProjects = [
+    {
+      id: 1,
+      title: "Project Alpha",
+      description: "First unique description goes here. Talk about your specific role or the tools used.",
+      views: "1.2k",
+      likes: "45",
+      link: "#"
+    },
+    {
+      id: 2,
+      title: "Project Bravo",
+      description: "Second unique description. Notice how this will automatically flip to the other side.",
+      views: "850",
+      likes: "120",
+      link: "#"
+    },
+    {
+      id: 3,
+      title: "Project Charlie",
+      description: "Third project details. The 'map' function handles the layout logic for you.",
+      views: "3.4k",
+      likes: "210",
+      link: "#"
+    },
+    {
+      id: 4,
+      title: "Project Delta",
+      description: "Fourth project details. You can keep adding as many as you want to this list.",
+      views: "500",
+      likes: "32",
+      link: "#"
+    }
+  ];
+
   return (
-    <div className="min-h-screen bg-slate-900 text-white">
+    <div className="min-h-screen bg-zinc-900 text-white">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-slate-900/95 backdrop-blur-sm border-b border-slate-800 z-50">
+      <nav className="fixed top-0 w-full bg-zinc-950/95 backdrop-blur-sm border-b border-zinc-800 z-50">
         <div className="container mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
-            <div className="text-xl font-bold text-blue-400">Tattvam Vaidya</div>
+            <div className="text-xl font-bold text-red-500">Tattvam Vaidya</div>
             <div className="hidden md:flex space-x-8">
               {[
                 { id: 'home', label: 'Home', icon: User },
@@ -67,8 +105,8 @@ function App() {
                 <button
                   key={id}
                   onClick={() => scrollToSection(id)}
-                  className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-all duration-300 hover:bg-slate-800 ${
-                    activeSection === id ? 'text-blue-400 bg-slate-800' : 'text-slate-300'
+                  className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-all duration-300 hover:bg-zinc-900 ${
+                    activeSection === id ? 'text-red-500 bg-zinc-900' : 'text-zinc-400'
                   }`}
                 >
                   <Icon size={16} />
@@ -85,27 +123,27 @@ function App() {
         <div className="container mx-auto px-6 text-center">
           <div className="animate-fade-in">
             <h1 className="text-5xl md:text-7xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-red-500 to-rose-500 bg-clip-text text-transparent">
                 Tattvam Vaidya
               </span>
             </h1>
-            <p className="text-xl md:text-2xl text-slate-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl text-zinc-300 mb-8 max-w-2xl mx-auto leading-relaxed">
               Aerospace Engineering Student
             </p>
-            <p className="text-lg text-slate-400 mb-12 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg text-zinc-400 mb-12 max-w-3xl mx-auto leading-relaxed">
               Passionate about engineering, design, and media. Currently pursuing aerospace engineering at UNCW 
               with hands-on experience in operations, video production, and technical problem-solving.
             </p>
             <div className="flex justify-center space-x-6">
               <button 
                 onClick={() => scrollToSection('about')}
-                className="bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:transform hover:scale-105"
+                className="bg-red-600 hover:bg-red-700 px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:transform hover:scale-105"
               >
                 Learn More
               </button>
               <button 
                 onClick={() => scrollToSection('contact')}
-                className="border border-slate-600 hover:border-blue-400 px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-slate-800"
+                className="border border-zinc-700 hover:border-red-500 px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-zinc-900 text-zinc-300"
               >
                 Get In Touch
               </button>
@@ -113,15 +151,15 @@ function App() {
           </div>
         </div>
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <ChevronDown className="text-slate-400" size={32} />
+          <ChevronDown className="text-zinc-500" size={32} />
         </div>
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 bg-slate-800/50">
+      <section id="about" className="py-20 bg-zinc-800/50">
         <div className="container mx-auto px-6">
           <h2 className="text-4xl font-bold text-center mb-16">
-            <span className="bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-red-500 to-rose-500 bg-clip-text text-transparent">
               About Me
             </span>
           </h2>
@@ -131,36 +169,31 @@ function App() {
                 <img 
                   src={myImage} 
                   alt="Picture of Me"
-                  className="w-full h-full object-cover rounded-xl shadow-lg"
+                  className="w-full h-full object-cover rounded-xl shadow-lg border border-zinc-800"
                 />
               </div>
             </div>
             <div className="space-y-6">
-              <div className="flex items-center space-x-3 text-slate-300">
-                <MapPin size={20} className="text-blue-400" />
+              <div className="flex items-center space-x-3 text-zinc-300">
+                <MapPin size={20} className="text-red-500" />
                 <span>University of North Carolina Wilmington</span>
               </div>
-              <div className="flex items-center space-x-3 text-slate-300">
-                <Calendar size={20} className="text-teal-400" />
+              <div className="flex items-center space-x-3 text-zinc-300">
+                <Calendar size={20} className="text-zinc-400" />
                 <span>Freshman Aerospace Engineering Student</span>
               </div>
-              <p className="text-lg text-slate-300 leading-relaxed">
+              <p className="text-lg text-zinc-300 leading-relaxed">
                 Recent high school graduate with a passion for aerospace engineering and technology. 
                 I bring hands-on experience from various roles in operations, media production, and customer service.
               </p>
-              <p className="text-lg text-slate-300 leading-relaxed">
-                My diverse background spans from technical operations at healthcare facilities to creative 
-                video production work. I'm excited to channel this multidisciplinary experience into my 
-                aerospace engineering studies at UNCW.
-              </p>
               <div className="grid grid-cols-2 gap-4 pt-6">
-                <div className="bg-slate-700 p-4 rounded-lg text-center">
-                  <div className="text-2xl font-bold text-blue-400">4+</div>
-                  <div className="text-slate-400">Work Experiences</div>
+                <div className="bg-zinc-900 p-4 rounded-lg text-center border border-zinc-800">
+                  <div className="text-2xl font-bold text-red-500">4+</div>
+                  <div className="text-zinc-400">Work Experiences</div>
                 </div>
-                <div className="bg-slate-700 p-4 rounded-lg text-center">
-                  <div className="text-2xl font-bold text-teal-400">Multiple</div>
-                  <div className="text-slate-400">Technical Skills</div>
+                <div className="bg-zinc-900 p-4 rounded-lg text-center border border-zinc-800">
+                  <div className="text-2xl font-bold text-zinc-400">Multiple</div>
+                  <div className="text-zinc-400">Technical Skills</div>
                 </div>
               </div>
             </div>
@@ -172,7 +205,7 @@ function App() {
       <section id="experience" className="py-20">
         <div className="container mx-auto px-6">
           <h2 className="text-4xl font-bold text-center mb-16">
-            <span className="bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-red-500 to-rose-500 bg-clip-text text-transparent">
               Experience
             </span>
           </h2>
@@ -208,20 +241,24 @@ function App() {
               }
             ].map((job, index) => (
               <div key={index} className="relative pl-8 pb-12">
-                <div className="absolute left-0 top-0 w-4 h-4 bg-blue-400 rounded-full"></div>
-                {index < 3 && <div className="absolute left-2 top-4 w-0.5 h-full bg-slate-600"></div>}
-                <div className="bg-slate-800 p-6 rounded-xl ml-6 hover:bg-slate-700 transition-all duration-300">
+                <div className="absolute left-0 top-0 w-4 h-4 bg-red-500 rounded-full"></div>
+                {index < 3 && <div className="absolute left-2 top-4 w-0.5 h-full bg-zinc-700"></div>}
+                <div className="bg-zinc-800 p-6 rounded-xl ml-6 hover:bg-zinc-700
+
+ transition-all duration-300">
                   <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
                     <div>
                       <h3 className="text-xl font-semibold text-white mb-1">{job.title}</h3>
-                      <p className="text-blue-400 font-medium">{job.company}</p>
+                      <p className="text-red-500 font-medium">{job.company}</p>
                     </div>
-                    <span className="text-slate-400 text-sm mt-2 md:mt-0">{job.period}</span>
+                    <span className="text-zinc-500 text-sm mt-2 md:mt-0">{job.period}</span>
                   </div>
-                  <p className="text-slate-300 mb-4 leading-relaxed">{job.description}</p>
+                  <p className="text-zinc-400 mb-4 leading-relaxed">{job.description}</p>
                   <div className="flex flex-wrap gap-2">
                     {job.skills.map((skill, skillIndex) => (
-                      <span key={skillIndex} className="bg-slate-700 text-teal-400 px-3 py-1 rounded-full text-sm">
+                      <span key={skillIndex} className="bg-zinc-800
+
+ text-rose-600 px-3 py-1 rounded-full text-sm">
                         {skill}
                       </span>
                     ))}
@@ -234,10 +271,10 @@ function App() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 bg-slate-800/50">
+      <section id="projects" className="py-20 bg-zinc-800/50">
         <div className="container mx-auto px-6">
           <h2 className="text-4xl font-bold text-center mb-16">
-            <span className="bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-red-500 to-rose-500 bg-clip-text text-transparent">
               Projects & Portfolio
             </span>
           </h2>
@@ -265,25 +302,27 @@ function App() {
                 status: "Active"
               }
             ].map((project, index) => (
-              <div key={index} className="bg-slate-800 p-6 rounded-xl hover:transform hover:scale-105 transition-all duration-300 group">
+              <div key={index} className="bg-zinc-900 p-6 rounded-xl hover:transform hover:scale-105 transition-all duration-300 group">
                 <div className="flex justify-between items-start mb-4">
-                  <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm">{project.category}</span>
-                  <span className="text-teal-400 text-sm">{project.status}</span>
+                  <span className="bg-red-600 text-white px-3 py-1 rounded-full text-sm">{project.category}</span>
+                  <span className="text-zinc-400 text-sm">{project.status}</span>
                 </div>
-                <h3 className="text-xl font-semibold mb-3 group-hover:text-blue-400 transition-colors duration-300">
+                <h3 className="text-xl font-semibold mb-3 group-hover:text-red-500 transition-colors duration-300">
                   {project.title}
                 </h3>
-                <p className="text-slate-300 mb-4 leading-relaxed">{project.description}</p>
+                <p className="text-zinc-400 mb-4 leading-relaxed">{project.description}</p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tech.map((tech, techIndex) => (
-                    <span key={techIndex} className="bg-slate-700 text-slate-300 px-2 py-1 rounded text-sm">
+                    <span key={techIndex} className="bg-zinc-800
+
+ text-zinc-400 px-2 py-1 rounded text-sm">
                       {tech}
                     </span>
                   ))}
                 </div>
                 <button 
                   onClick={() => scrollToSection('portfolio')}
-                  className="flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-colors duration-300"
+                  className="flex items-center space-x-2 text-red-500 hover:text-blue-300 transition-colors duration-300"
                 >
                   <span>View Details</span>
                   <ExternalLink size={16} />
@@ -298,59 +337,49 @@ function App() {
       <section id="portfolio" className="py-20">
         <div className="container mx-auto px-6">
           <h2 className="text-4xl font-bold text-center mb-16">
-            <span className="bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-red-500 to-rose-500 bg-clip-text text-transparent">
               Portfolio
             </span>
           </h2>
           
           {/* Media Work Section */}
           <div className="mb-16">
-            <h3 className="text-2xl font-semibold mb-8 text-center">Media Work</h3>
+            <h3 className="text-2xl font-semibold mb-8 text-center text-zinc-400">Media Work</h3>
             <div className="space-y-12">
-              {/* Media items in staggered layout */}
-              {[1, 2, 3, 4].map((item, index) => (
-                <div key={item} className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 items-center`}>
+
+              {/* 2. We 'map' over your unique projects instead of just numbers [1,2,3,4] */}
+              {mediaProjects.map((project, index) => (
+                <div key={project.id} className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 items-center`}>
+                  
                   {/* Media placeholder */}
                   <div className="w-full lg:w-1/2">
-                    <div className="aspect-video bg-slate-700 rounded-xl flex items-center justify-center">
+                    <div className="aspect-video bg-zinc-800 border border-zinc-800 rounded-xl flex items-center justify-center">
                       <div className="text-center">
-                        <div className="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center mx-auto mb-2">
+                        <div className="w-16 h-16 bg-red-900/30 text-red-500 rounded-lg flex items-center justify-center mx-auto mb-2 border border-red-500/20">
                           <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M2 6a2 2 0 012-2h6l2 2h6a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM5 8a1 1 0 000 2h8a1 1 0 100-2H5z"/>
                           </svg>
                         </div>
-                        <span className="text-sm text-slate-400">Media Placeholder {item}</span>
+                        <span className="text-sm text-zinc-500">{project.title} Placeholder</span>
                       </div>
                     </div>
                   </div>
                   
                   {/* Content block */}
                   <div className="w-full lg:w-1/2 space-y-4">
-                    <h4 className="text-xl font-semibold text-white">test</h4>
-                    <p className="text-slate-300 leading-relaxed">Insert description here - detailed information about this media project, the work involved, and key highlights.</p>
-                    
-                    {/* Stats */}
+                    <h4 className="text-xl font-semibold text-white">{project.title}</h4>
+                    <p className="text-zinc-400 leading-relaxed">{project.description}</p>
                     <div className="flex space-x-6 text-sm">
                       <div className="flex items-center space-x-2">
-                        <svg className="w-4 h-4 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
-                          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
-                          <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd"/>
-                        </svg>
-                        <span className="text-slate-400">69 views</span>
+                        <Eye size={16} className="text-red-500" />
+                        <span className="text-zinc-500">{project.views} views</span>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <svg className="w-4 h-4 text-red-400" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd"/>
-                        </svg>
-                        <span className="text-slate-400">420 likes</span>
+                        <Heart size={16} className="text-red-500" />
+                        <span className="text-zinc-500">{project.likes} likes</span>
                       </div>
                     </div>
-                    
-                    {/* External link */}
-                    <a 
-                      href="#" 
-                      className="inline-flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-colors duration-300"
-                    >
+                    <a href={project.link} className="inline-flex items-center space-x-2 text-red-500 hover:text-red-400">
                       <span>View on YouTube</span>
                       <ExternalLink size={16} />
                     </a>
@@ -362,138 +391,59 @@ function App() {
 
           {/* CAD Design Projects Section */}
           <div className="mb-16">
-            <h3 className="text-2xl font-semibold mb-8 text-center">CAD Design Projects</h3>
-            <div className="bg-slate-800 p-8 rounded-xl">
-              <div className="text-center mb-6">
-                <p className="text-slate-300 mb-4">3D models and technical drawings for engineering applications</p>
+            <h3 className="text-2xl font-semibold mb-8 text-center text-zinc-400">CAD Design Projects</h3>
+            <div className="bg-zinc-950 p-8 rounded-xl border border-zinc-800">
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                  {/* CAD project placeholders */}
                   {[1, 2, 3, 4, 5, 6].map((item) => (
-                    <div key={item} className="aspect-square bg-slate-700 rounded-lg flex items-center justify-center hover:bg-slate-600 transition-colors duration-300 cursor-pointer">
+                    <div key={item} className="aspect-square bg-zinc-800 rounded-lg flex items-center justify-center hover:bg-zinc-700 transition-colors duration-300 cursor-pointer border border-zinc-700">
                       <div className="text-center">
-                        <div className="w-12 h-12 bg-teal-600 rounded-lg flex items-center justify-center mx-auto mb-2">
-                          <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M3 4a1 1 0 011-1h4a1 1 0 010 2H6.414l2.293 2.293a1 1 0 01-1.414 1.414L5 6.414V8a1 1 0 01-2 0V4zm9 1a1 1 0 010-2h4a1 1 0 011 1v4a1 1 0 01-2 0V6.414l-2.293 2.293a1 1 0 11-1.414-1.414L13.586 5H12zm-9 7a1 1 0 012 0v1.586l2.293-2.293a1 1 0 111.414 1.414L6.414 15H8a1 1 0 010 2H4a1 1 0 01-1-1v-4zm13-1a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 010-2h1.586l-2.293-2.293a1 1 0 111.414-1.414L15 13.586V12a1 1 0 011-1z" clipRule="evenodd"/>
-                          </svg>
+                        <div className="w-12 h-12 bg-zinc-700/50 text-red-500 rounded-lg flex items-center justify-center mx-auto mb-2">
+                          <Box size={24} />
                         </div>
-                        <span className="text-xs text-slate-400">CAD {item}</span>
+                        <span className="text-xs text-zinc-500">CAD Project {item}</span>
                       </div>
                     </div>
                   ))}
                 </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Web Development Section */}
-          <div>
-            <h3 className="text-2xl font-semibold mb-8 text-center">Web Development</h3>
-            <div className="bg-slate-800 p-8 rounded-xl max-w-sm mx-auto">
-              <div className="text-center">
-                {/* Company Logo Placeholder */}
-                <div className="w-20 h-20 bg-slate-700 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <span className="text-slate-400 text-xs">Logo</span>
-                </div>
-                <h4 className="text-lg font-semibold mb-2">Company Name</h4>
-                <p className="text-slate-300 mb-6">Project description here</p>
-                <a 
-                  href="#" 
-                  className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 px-6 py-3 rounded-lg transition-all duration-300"
-                >
-                  <span>Visit Website</span>
-                  <ExternalLink size={16} />
-                </a>
-              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-slate-800/50">
+      <section id="contact" className="py-20 bg-zinc-800/50">
         <div className="container mx-auto px-6">
           <h2 className="text-4xl font-bold text-center mb-16">
-            <span className="bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-red-500 to-rose-500 bg-clip-text text-transparent">
               Get In Touch
             </span>
           </h2>
           <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
             <div className="space-y-8">
-              <div>
-                <h3 className="text-2xl font-semibold mb-4">Let's Connect</h3>
-                <p className="text-slate-300 text-lg leading-relaxed">
-                  I'm always interested in discussing new opportunities, 
-                  collaborations, or just connecting with fellow engineering and media enthusiasts.
-                </p>
-              </div>
               <div className="space-y-6">
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
-                    <Mail size={24} />
+                {[
+                  { icon: Mail, label: 'Email', value: 'tattvam.vaidya@gmail.com' },
+                  { icon: Linkedin, label: 'LinkedIn', value: 'linkedin.com/in/tattvamvaidya' },
+                  { icon: Github, label: 'GitHub', value: 'github.com/Zambucko2' }
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center space-x-4">
+                    <div className="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center text-white">
+                      <item.icon size={24} />
+                    </div>
+                    <div>
+                      <div className="font-semibold text-zinc-400">{item.label}</div>
+                      <div className="text-zinc-400">{item.value}</div>
+                    </div>
                   </div>
-                  <div>
-                    <div className="font-semibold">Email</div>
-                    <div className="text-slate-300">tattvam.vaidya@gmail.com</div>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
-                    <Linkedin size={24} />
-                  </div>
-                  <div>
-                    <div className="font-semibold">LinkedIn</div>
-                    <div className="text-slate-300">linkedin.com/in/tattvamvaidya</div>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
-                    <Github size={24} />
-                  </div>
-                  <div>
-                    <div className="font-semibold">GitHub</div>
-                    <div className="text-slate-300">github.com/Zambucko2</div>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
             <div>
               <form className="space-y-6">
-                <div>
-                  <label className="block text-sm font-medium mb-2">Name</label>
-                  <input 
-                    type="text" 
-                    className="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg focus:border-blue-400 focus:outline-none transition-colors duration-300"
-                    placeholder="Your Name"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-2">Email</label>
-                  <input 
-                    type="email" 
-                    className="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg focus:border-blue-400 focus:outline-none transition-colors duration-300"
-                    placeholder="your.email@example.com"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-2">Subject</label>
-                  <input 
-                    type="text" 
-                    className="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg focus:border-blue-400 focus:outline-none transition-colors duration-300"
-                    placeholder="What's this about?"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-2">Message</label>
-                  <textarea 
-                    rows={6}
-                    className="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg focus:border-blue-400 focus:outline-none transition-colors duration-300"
-                    placeholder="Tell me about your project or opportunity..."
-                  ></textarea>
-                </div>
-                <button 
-                  type="submit" 
-                  className="w-full bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:transform hover:scale-105"
-                >
+                <input className="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-lg focus:border-red-500 focus:outline-none text-zinc-200" placeholder="Name" />
+                <input className="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-lg focus:border-red-500 focus:outline-none text-zinc-200" placeholder="Email" />
+                <textarea rows={6} className="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-lg focus:border-red-500 focus:outline-none text-zinc-200" placeholder="Message"></textarea>
+                <button className="w-full bg-red-600 hover:bg-red-700 py-4 rounded-lg font-semibold transition-all">
                   Send Message
                 </button>
               </form>
@@ -503,24 +453,9 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-slate-900 py-12 border-t border-slate-800">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="text-slate-400 mb-4 md:mb-0">
-              © 2026 Tattvam Vaidya. All rights reserved.
-            </div>
-            <div className="flex space-x-6">
-              <a href="#" className="text-slate-400 hover:text-blue-400 transition-colors duration-300">
-                <Mail size={24} />
-              </a>
-              <a href="#" className="text-slate-400 hover:text-blue-400 transition-colors duration-300">
-                <Linkedin size={24} />
-              </a>
-              <a href="#" className="text-slate-400 hover:text-blue-400 transition-colors duration-300">
-                <Github size={24} />
-              </a>
-            </div>
-          </div>
+      <footer className="bg-zinc-950 py-12 border-t border-zinc-900">
+        <div className="container mx-auto px-6 text-center text-zinc-500">
+          © 2026 Tattvam Vaidya. All rights reserved.
         </div>
       </footer>
     </div>
