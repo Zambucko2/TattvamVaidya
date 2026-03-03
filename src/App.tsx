@@ -326,7 +326,7 @@ function App() {
                   
                   {/* Content block */}
                   <div className="w-full lg:w-1/2 space-y-4">
-                    <h4 className="text-xl font-semibold text-white">Insert Title Here</h4>
+                    <h4 className="text-xl font-semibold text-white">test</h4>
                     <p className="text-slate-300 leading-relaxed">Insert description here - detailed information about this media project, the work involved, and key highlights.</p>
                     
                     {/* Stats */}
@@ -336,13 +336,13 @@ function App() {
                           <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
                           <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd"/>
                         </svg>
-                        <span className="text-slate-400">X views</span>
+                        <span className="text-slate-400">69 views</span>
                       </div>
                       <div className="flex items-center space-x-2">
                         <svg className="w-4 h-4 text-red-400" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd"/>
                         </svg>
-                        <span className="text-slate-400">X likes</span>
+                        <span className="text-slate-400">420 likes</span>
                       </div>
                     </div>
                     
