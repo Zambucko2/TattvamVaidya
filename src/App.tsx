@@ -83,9 +83,6 @@ function App() {
         console.log(error.text);
         setStatus('error');
     });
-
-    const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID || "NOT_FOUND";
-    console.log("Service ID Check:", serviceID);
   };
 
   const [copied, setCopied] = useState(false);
