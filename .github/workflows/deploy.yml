@@ -37,7 +37,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # this should match your build output folder (usually 'dist' for Vite)
-          path: 'docs'
+          path: './dist'
 
   deploy:
     needs: build_site
