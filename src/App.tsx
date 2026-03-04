@@ -1,4 +1,14 @@
-import React, { useEffect, useState } from 'react';
+interface CadProject {
+  id: number;
+  title: string;
+  description: string;
+  fullDescription: string;
+  image: string;
+  tools: string[];
+  onshapeLink?: string; // Optional link
+}
+
+import React, { useEffect, useState, useRef } from 'react';
 import { 
   Mail, 
   Github, 
@@ -14,9 +24,11 @@ import {
   ExternalLink,
   Eye,
   Heart,
-  Box
+  Box,
+  X
 } from 'lucide-react';
 import myImage from '/media/mypicture.jpg';
+import emailjs from '@emailjs/browser';
 
 function App() {
   const [activeSection, setActiveSection] = useState('home');
@@ -51,6 +63,34 @@ function App() {
     }
   };
 
+  
+  const form = useRef<HTMLFormElement>(null); // This "points" to your form
+  const [status, setStatus] = useState('');   // To show "Sending..." or "Success!"
+
+  const sendEmail = (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('sending');
+
+    if (!form.current) return;
+
+    emailjs.sendForm(
+      import.meta.env.VITE_EMAILJS_SERVICE_ID, 
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID, 
+      form.current,
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+    )
+    .then(() => {
+        setStatus('success');
+        form.current?.reset(); // Clears the form after sending
+    }, (error) => {
+        console.log(error.text);
+        setStatus('error');
+    });
+  };
+
+  const [copied, setCopied] = useState(false);
+
+  const [selectedProject, setSelectedProject] = useState<CadProject | null>(null);
   const mediaProjects = [
     {
       id: 1,
@@ -85,6 +125,64 @@ function App() {
       link: "#"
     }
   ];
+
+  const cadProjects: CadProject[] = [
+  {
+    id: 1,
+    title: "Project 1",
+    description: "Single-crystal superalloy blade design for next-gen jet engines.",
+    fullDescription: "Designed to withstand extreme thermal gradients and centrifugal forces. This model features internal cooling channels and a specialized fir-tree root attachment for secure disk mounting.",
+    image: "https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?auto=format&fit=crop&q=80&w=800", // Placeholder: Turbine/Gear
+    tools: ["Onshape"],
+    onshapeLink: "https://cad.onshape.com"
+  },
+  {
+    id: 2,
+    title: "Project 2",
+    description: "Composite airframe optimized for low radar cross-section.",
+    fullDescription: "A full-body CAD assembly of a tactical drone. Focus was placed on the internal spar structure and the integration of carbon-fiber skin panels for maximum strength-to-weight ratio.",
+    image: "https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&q=80&w=800", // Placeholder: Drone/Tech
+    tools: ["Onshape", "Fusion 360"],
+    onshapeLink: "https://cad.onshape.com"
+
+  },
+  {
+    id: 3,
+    title: "Project 3",
+    description: "Modular CubeSat 6U frame for orbital research.",
+    fullDescription: "A modular 6U CubeSat chassis designed for rapid deployment. Includes integrated mounting points for solar arrays, radiation shielding, and standard PC-104 electronics stacks.",
+    image: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&q=80&w=800", // Placeholder: Space/Satellite
+    tools: ["Onshape"],
+    onshapeLink: "https://cad.onshape.com"
+  },
+  {
+    id: 4,
+    title: "Project 4",
+    description: "Hydraulic-to-mechanical conversion linkage system.",
+    fullDescription: "Mechanical simulation of a landing gear retraction sequence. This project involved calculating linkage lengths to ensure over-center locking in the extended position.",
+    image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&q=80&w=800", // Placeholder: Mechanical
+    tools: ["Onshape"],
+    onshapeLink: "https://cad.onshape.com"
+  },
+  {
+    id: 5,
+    title: "Project 5",
+    description: "Regenerative cooling system for liquid rocket engines.",
+    fullDescription: "Complex helical cooling channels designed to circulate cryogenic propellant around the combustion chamber to prevent melting during high-impulse burns.",
+    image: "https://images.unsplash.com/photo-1517976487492-5750f3195933?auto=format&fit=crop&q=80&w=800", // Placeholder: Rocket
+    tools: ["Onshape"],
+    onshapeLink: "https://cad.onshape.com"
+  },
+  {
+    id: 6,
+    title: "Project 6",
+    description: "Ergonomic human-machine interface for flight decks.",
+    fullDescription: "Focused on human factors engineering, this project involved the placement of avionics displays and tactile switches based on pilot reach-zone data.",
+    image: "https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?auto=format&fit=crop&q=80&w=800", // Placeholder: Cockpit/Interior
+    tools: ["Onshape", "Fusion 360"],
+    onshapeLink: "https://cad.onshape.com"
+  }
+];
 
   return (
     <div className="min-h-screen bg-zinc-900 text-white">
@@ -188,7 +286,7 @@ function App() {
               </p>
               <div className="grid grid-cols-2 gap-4 pt-6">
                 <div className="bg-zinc-900 p-4 rounded-lg text-center border border-zinc-800">
-                  <div className="text-2xl font-bold text-red-500">4+</div>
+                  <div className="text-2xl font-bold text-red-500">4+ Years</div>
                   <div className="text-zinc-400">Work Experiences</div>
                 </div>
                 <div className="bg-zinc-900 p-4 rounded-lg text-center border border-zinc-800">
@@ -393,14 +491,30 @@ function App() {
           <div className="mb-16">
             <h3 className="text-2xl font-semibold mb-8 text-center text-zinc-400">CAD Design Projects</h3>
             <div className="bg-zinc-950 p-8 rounded-xl border border-zinc-800">
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                  {[1, 2, 3, 4, 5, 6].map((item) => (
-                    <div key={item} className="aspect-square bg-zinc-800 rounded-lg flex items-center justify-center hover:bg-zinc-700 transition-colors duration-300 cursor-pointer border border-zinc-700">
-                      <div className="text-center">
-                        <div className="w-12 h-12 bg-zinc-700/50 text-red-500 rounded-lg flex items-center justify-center mx-auto mb-2">
-                          <Box size={24} />
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {cadProjects.map((project) => (
+                    <div 
+                      key={project.id} 
+                      onClick={() => setSelectedProject(project)} // Opens the modal
+                      className="group bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden hover:border-rose-500/50 transition-all cursor-pointer"
+                    >
+                      <div className="aspect-square bg-zinc-800 relative overflow-hidden">
+                        <img 
+                          src={project.image} 
+                          alt={project.title}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        />
+                      </div>
+                      <div className="p-4">
+                        <h4 className="text-lg font-semibold text-zinc-100 mb-1">{project.title}</h4>
+                        <p className="text-sm text-zinc-400 mb-3">{project.description}</p>
+                        <div className="flex flex-wrap gap-2">
+                          {project.tools.map(tool => (
+                            <span key={tool} className="text-[10px] uppercase tracking-wider bg-zinc-800 text-rose-500 px-2 py-1 rounded">
+                              {tool}
+                            </span>
+                          ))}
                         </div>
-                        <span className="text-xs text-zinc-500">CAD Project {item}</span>
                       </div>
                     </div>
                   ))}
@@ -414,38 +528,121 @@ function App() {
       <section id="contact" className="py-20 bg-zinc-800/50">
         <div className="container mx-auto px-6">
           <h2 className="text-4xl font-bold text-center mb-16">
-            <span className="bg-gradient-to-r from-red-500 to-rose-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-red-600 to-red-500 bg-clip-text text-transparent">
               Get In Touch
             </span>
           </h2>
+
           <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-            <div className="space-y-8">
-              <div className="space-y-6">
-                {[
-                  { icon: Mail, label: 'Email', value: 'tattvam.vaidya@gmail.com' },
-                  { icon: Linkedin, label: 'LinkedIn', value: 'linkedin.com/in/tattvamvaidya' },
-                  { icon: Github, label: 'GitHub', value: 'github.com/Zambucko2' }
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center text-white">
-                      <item.icon size={24} />
-                    </div>
-                    <div>
-                      <div className="font-semibold text-zinc-400">{item.label}</div>
-                      <div className="text-zinc-400">{item.value}</div>
-                    </div>
-                  </div>
-                ))}
+            {/* Contact Info Cards */}
+            <div className="space-y-6">
+              {/* Email Card with Copy to Clipboard */}
+              <div 
+                onClick={() => {
+                  navigator.clipboard.writeText("tattvam.vaidya@gmail.com");
+                  setCopied(true);
+                  setTimeout(() => setCopied(false), 2000);
+                }}
+                className="flex items-center p-4 bg-zinc-900 border border-zinc-900 rounded-xl cursor-pointer hover:border-red-600/50 transition-all group relative"
+              >
+                <div className="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center text-white group-hover:shadow-[0_0_15px_rgba(220,38,38,0.5)] transition-all">
+                  <Mail size={24} />
+                </div>
+                <div className="ml-4">
+                  <div className="font-semibold text-zinc-100 text-sm uppercase tracking-wider">Email Me</div>
+                  <div className="text-zinc-400">tattvam.vaidya@gmail.com</div>
+                </div>
+                {copied && (
+                  <span className="absolute right-4 text-xs font-bold text-red-500 animate-pulse">
+                    COPIED!
+                  </span>
+                )}
               </div>
+
+              {/* LinkedIn Link */}
+              <a 
+                href="https://linkedin.com/in/tattvamvaidya" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center p-4 bg-zinc-900 border border-zinc-900 rounded-xl hover:border-red-600/50 transition-all group"
+              >
+                <div className="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center text-white group-hover:shadow-[0_0_15px_rgba(220,38,38,0.5)] transition-all">
+                  <Linkedin size={24} />
+                </div>
+                <div className="ml-4">
+                  <div className="font-semibold text-zinc-100 text-sm uppercase tracking-wider">LinkedIn</div>
+                  <div className="text-zinc-400">linkedin.com/in/tattvamvaidya</div>
+                </div>
+                <ExternalLink size={18} className="ml-auto text-zinc-600 group-hover:text-red-500 transition-colors" />
+              </a>
+
+              {/* GitHub Link */}
+              <a 
+                href="https://github.com/Zambucko2" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center p-4 bg-zinc-900 border border-zinc-900 rounded-xl hover:border-red-600/50 transition-all group"
+              >
+                <div className="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center text-white group-hover:shadow-[0_0_15px_rgba(220,38,38,0.5)] transition-all">
+                  <Github size={24} />
+                </div>
+                <div className="ml-4">
+                  <div className="font-semibold text-zinc-100 text-sm uppercase tracking-wider">GitHub</div>
+                  <div className="text-zinc-400">github.com/Zambucko2</div>
+                </div>
+                <ExternalLink size={18} className="ml-auto text-zinc-600 group-hover:text-red-500 transition-colors" />
+              </a>
             </div>
-            <div>
-              <form className="space-y-6">
-                <input className="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-lg focus:border-red-500 focus:outline-none text-zinc-200" placeholder="Name" />
-                <input className="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-lg focus:border-red-500 focus:outline-none text-zinc-200" placeholder="Email" />
-                <textarea rows={6} className="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-lg focus:border-red-500 focus:outline-none text-zinc-200" placeholder="Message"></textarea>
-                <button className="w-full bg-red-600 hover:bg-red-700 py-4 rounded-lg font-semibold transition-all">
-                  Send Message
+
+            {/* Form Section */}
+            <div className="bg-zinc-900/50 p-8 rounded-2xl border border-zinc-800">
+              <form ref={form} onSubmit={sendEmail} className="space-y-6">
+                <div>
+                  <label className="block text-sm font-medium mb-2 text-zinc-400 uppercase tracking-widest">Name</label>
+                  <input 
+                    name="user_name"
+                    required
+                    type="text" 
+                    className="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-lg focus:border-red-600 focus:outline-none transition-all text-zinc-200 placeholder:text-zinc-700"
+                    placeholder="Your Name"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-2 text-zinc-400 uppercase tracking-widest">Email</label>
+                  <input 
+                    name="user_email"
+                    required
+                    type="email" 
+                    className="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-lg focus:border-red-600 focus:outline-none transition-all text-zinc-200 placeholder:text-zinc-700"
+                    placeholder="email@example.com"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-2 text-zinc-400 uppercase tracking-widest">Message</label>
+                  <textarea 
+                    name="message"
+                    required
+                    rows={4}
+                    className="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-lg focus:border-red-600 focus:outline-none transition-all text-zinc-200 placeholder:text-zinc-700"
+                    placeholder="Briefly describe your inquiry..."
+                  ></textarea>
+                </div>
+
+                <button 
+                  type="submit" 
+                  disabled={status === 'sending'}
+                  className="w-full bg-red-600 hover:bg-red-700 disabled:bg-zinc-800 text-white px-8 py-4 rounded-lg font-bold transition-all duration-300 shadow-lg shadow-red-900/20 active:scale-95"
+                >
+                  {status === 'sending' ? 'PROCESSING...' : 'SEND MESSAGE'}
                 </button>
+
+                {/* Feedback */}
+                {status === 'success' && (
+                  <p className="text-emerald-500 text-center font-medium animate-pulse">✓ Message sent successfully!</p>
+                )}
+                {status === 'error' && (
+                  <p className="text-red-500 text-center font-medium">✕ Error sending message. Please try again.</p>
+                )}
               </form>
             </div>
           </div>
@@ -458,6 +655,68 @@ function App() {
           © 2026 Tattvam Vaidya. All rights reserved.
         </div>
       </footer>
+
+      {/* CAD Project Modal */}
+      {selectedProject && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8">
+          {/* Backdrop - clicking this also closes */}
+          <div 
+            className="absolute inset-0 bg-zinc-950/90 backdrop-blur-md"
+            onClick={() => setSelectedProject(null)}
+          ></div>
+          
+          {/* Modal Content */}
+          <div className="relative bg-zinc-900 border border-zinc-800 w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-2xl shadow-2xl animate-in fade-in zoom-in duration-300">
+            <div className="p-6 md:p-10">
+              {/* Main Image */}
+              <div className="aspect-video bg-zinc-800 rounded-xl mb-8 overflow-hidden border border-zinc-700 shadow-inner">
+                <img 
+                  src={selectedProject.image} 
+                  alt={selectedProject.title} 
+                  className="w-full h-full object-contain" 
+                />
+              </div>
+              
+              <div className="space-y-6">
+                <div className="flex flex-wrap gap-2">
+                  {selectedProject.tools.map(tool => (
+                    <span key={tool} className="text-[10px] font-bold uppercase tracking-[0.2em] text-rose-500 bg-rose-500/10 border border-rose-500/20 px-3 py-1 rounded-md">
+                      {tool}
+                    </span>
+                  ))}
+                </div>
+
+                <h3 className="text-3xl md:text-4xl font-bold text-zinc-100">{selectedProject.title}</h3>
+                
+                <div className="space-y-4 text-zinc-400 text-lg leading-relaxed border-l-2 border-rose-600 pl-6">
+                  <p className="font-medium text-zinc-200">{selectedProject.description}</p>
+                  <p>{selectedProject.fullDescription}</p>
+                </div>
+                
+                <div className="pt-8 border-t border-zinc-800 flex flex-col sm:flex-row gap-4 justify-between items-center">
+                  {selectedProject.onshapeLink && (
+                    <a 
+                      href={selectedProject.onshapeLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-rose-500 hover:text-rose-400 font-bold transition-colors"
+                    >
+                      <ExternalLink size={20} />
+                      View 3D Model in OnShape
+                    </a>
+                  )}
+                  <button 
+                    onClick={() => setSelectedProject(null)}
+                    className="w-full sm:w-auto px-8 py-3 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-lg transition-all active:scale-95 shadow-lg shadow-rose-900/20"
+                  >
+                    Close Project
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
