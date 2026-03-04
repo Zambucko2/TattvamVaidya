@@ -83,6 +83,8 @@ function App() {
         console.log(error.text);
         setStatus('error');
     });
+
+    console.log("Service ID:", import.meta.env.VITE_EMAILJS_SERVICE_ID);
   };
 
   const [copied, setCopied] = useState(false);
