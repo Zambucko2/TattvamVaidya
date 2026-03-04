@@ -23,8 +23,15 @@ import {
   ExternalLink,
   Eye,
   Heart,
+  Import,
+  Rocket,
 } from 'lucide-react';
+
 import myImage from '/media/mypicture.jpg';
+import Myrocket from '/media/rocket 1.png';
+import House from '/media/house.png';
+import ComingSoon from '/media/Coming Soon.png';
+
 import emailjs from '@emailjs/browser';
 
 function App() {
@@ -129,7 +136,7 @@ function App() {
     title: "Dark Horse 2-Stage Rocket",
     description: "A small two-stage rocket designed for hobbyist-level high-altitude flights.",
     fullDescription: "Designed a 2 Stage solid-fuel rocket using Onshape. The first stage features a 30mm diameter motor mount with four static fins, while the second stage is the same diameter payload section. Both stages are optimized for weight reduction while maintaining structural integrity and fully 3D Printed.",
-    image: "rocket 1.png", // Placeholder: Turbine/Gear
+    image: Myrocket, // Placeholder: Turbine/Gear
     tools: ["Onshape", "3D Printing", "Fusion 360", "Open-Rocket Simulation"],
     onshapeLink: "https://cad.onshape.com/documents/c4261fdc2ae44fb4d33883dd/w/5ffebb340c27f18be689c5f4/e/7c70df7411f8906c76c0ce75?renderMode=0&uiState=69a7b427653d10c9e139c3c8"
   },
@@ -138,7 +145,7 @@ function App() {
     title: "Modern House",
     description: "Experimented with architectural design principles to create a sleek, modern residential structure.",
     fullDescription: "A modern home design project focused on clean lines, open spaces, and integration with the environment. The design features large windows for natural light, a minimalist interior layout, and sustainable materials. This project was created using Onshape and Fusion 360 to explore architectural concepts and 3D modeling techniques.",
-    image: "house.png", // Placeholder: Drone/Tech
+    image: House, // Placeholder: Drone/Tech
     tools: ["Onshape", "Fusion 360"],
     onshapeLink: "https://cad.onshape.com/documents/7074161f8e2f9eb7a80d40c9/w/c690bce35308f4af02666888/e/4065544255faa18a66a9c24f?renderMode=0&uiState=69a7b5233c14a9271599b965"
 
@@ -148,7 +155,7 @@ function App() {
     title: "Tripoli Level 1 Certification Rocket",
     description: "A rocket designed to meet the requirements for Tripoli Level 1 certification.",
     fullDescription: "Designed a single-stage rocket to meet Tripoli Level 1 certification standards. The design includes a 29mm motor mount, three symmetrically placed fins for stability, and a payload section capable of carrying small instruments. The project was developed using Onshape for CAD modeling and Open-Rocket for flight simulation to ensure compliance with certification requirements.",
-    image: "Coming Soon.png", // Placeholder: Space/Satellite
+    image: ComingSoon, // Placeholder: Space/Satellite
     tools: ["Onshape", "Open-Rocket Simulation"],
     onshapeLink: "https://cad.onshape.com"
   },
