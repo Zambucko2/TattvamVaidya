@@ -709,7 +709,7 @@ function App() {
                     onClick={() => setSelectedProject(null)}
                     className="w-full sm:w-auto px-8 py-3 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-lg transition-all active:scale-95 shadow-lg shadow-rose-900/20"
                   >
-                    Close Project
+                    Close
                   </button>
                 </div>
               </div>
