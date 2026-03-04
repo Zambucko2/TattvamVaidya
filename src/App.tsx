@@ -91,94 +91,69 @@ function App() {
   const mediaProjects = [
     {
       id: 1,
-      title: "Project Alpha",
-      description: "First unique description goes here. Talk about your specific role or the tools used.",
-      views: "1.2k",
-      likes: "45",
-      link: "#"
+      title: "That one time we went to London!!",
+      description: "Definitely turned out to be one of my favorite food trips..yum =p",
+      youtubeId: "jqDxiH_Pl7Y?si=czlrN63Lmcq_23Ar",
+      views: "23",
+    likes: "3"
     },
     {
       id: 2,
-      title: "Project Bravo",
-      description: "Second unique description. Notice how this will automatically flip to the other side.",
-      views: "850",
-      likes: "120",
-      link: "#"
+      title: "February 11, 2026",
+      description: "A coaching session of restorative practices for High School Coaches to adapt to modern times and newer needs.",
+      views: "5",
+      likes: "1",
+      youtubeId: "9cjplGNSL2Y?si=LapEfDrucD5aX5lB"
     },
     {
       id: 3,
-      title: "Project Charlie",
-      description: "Third project details. The 'map' function handles the layout logic for you.",
-      views: "3.4k",
-      likes: "210",
-      link: "#"
+      title: "SRMHS Football 2024 Season: ALL In",
+      description: "A weekly series following our SE Bulldogs football team as they compete throughout the year!",
+      views: "650",
+      likes: "6",
+      youtubeId: "HnhEDePHDVU?si=ArNPj8lsTHgYKXsf"
     },
     {
       id: 4,
-      title: "Project Delta",
-      description: "Fourth project details. You can keep adding as many as you want to this list.",
+      title: "Coming Soon...",
+      description: "Coming soon...sooner than you think ;) Stay tuned for some exciting content in the near future!",
       views: "500",
       likes: "32",
-      link: "#"
+      youtubeId: "#"
     }
   ];
 
   const cadProjects: CadProject[] = [
   {
     id: 1,
-    title: "Project 1",
-    description: "Single-crystal superalloy blade design for next-gen jet engines.",
-    fullDescription: "Designed to withstand extreme thermal gradients and centrifugal forces. This model features internal cooling channels and a specialized fir-tree root attachment for secure disk mounting.",
-    image: "https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?auto=format&fit=crop&q=80&w=800", // Placeholder: Turbine/Gear
-    tools: ["Onshape"],
-    onshapeLink: "https://cad.onshape.com"
+    title: "Dark Horse 2-Stage Rocket",
+    description: "A small two-stage rocket designed for hobbyist-level high-altitude flights.",
+    fullDescription: "Designed a 2 Stage solid-fuel rocket using Onshape. The first stage features a 30mm diameter motor mount with four static fins, while the second stage is the same diameter payload section. Both stages are optimized for weight reduction while maintaining structural integrity and fully 3D Printed.",
+    image: "./media/rocket 1.png", // Placeholder: Turbine/Gear
+    tools: ["Onshape", "3D Printing", "Fusion 360", "Open-Rocket Simulation"],
+    onshapeLink: "https://cad.onshape.com/documents/c4261fdc2ae44fb4d33883dd/w/5ffebb340c27f18be689c5f4/e/7c70df7411f8906c76c0ce75?renderMode=0&uiState=69a7b427653d10c9e139c3c8"
   },
   {
     id: 2,
-    title: "Project 2",
-    description: "Composite airframe optimized for low radar cross-section.",
-    fullDescription: "A full-body CAD assembly of a tactical drone. Focus was placed on the internal spar structure and the integration of carbon-fiber skin panels for maximum strength-to-weight ratio.",
-    image: "https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&q=80&w=800", // Placeholder: Drone/Tech
+    title: "Modern House",
+    description: "Experimented with architectural design principles to create a sleek, modern residential structure.",
+    fullDescription: "A modern home design project focused on clean lines, open spaces, and integration with the environment. The design features large windows for natural light, a minimalist interior layout, and sustainable materials. This project was created using Onshape and Fusion 360 to explore architectural concepts and 3D modeling techniques.",
+    image: "./media/house.png", // Placeholder: Drone/Tech
     tools: ["Onshape", "Fusion 360"],
-    onshapeLink: "https://cad.onshape.com"
+    onshapeLink: "https://cad.onshape.com/documents/7074161f8e2f9eb7a80d40c9/w/c690bce35308f4af02666888/e/4065544255faa18a66a9c24f?renderMode=0&uiState=69a7b5233c14a9271599b965"
 
   },
   {
     id: 3,
-    title: "Project 3",
-    description: "Modular CubeSat 6U frame for orbital research.",
-    fullDescription: "A modular 6U CubeSat chassis designed for rapid deployment. Includes integrated mounting points for solar arrays, radiation shielding, and standard PC-104 electronics stacks.",
-    image: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&q=80&w=800", // Placeholder: Space/Satellite
-    tools: ["Onshape"],
+    title: "Tripoli Level 1 Certification Rocket",
+    description: "A rocket designed to meet the requirements for Tripoli Level 1 certification.",
+    fullDescription: "Designed a single-stage rocket to meet Tripoli Level 1 certification standards. The design includes a 29mm motor mount, three symmetrically placed fins for stability, and a payload section capable of carrying small instruments. The project was developed using Onshape for CAD modeling and Open-Rocket for flight simulation to ensure compliance with certification requirements.",
+    image: "./media/Coming Soon.png", // Placeholder: Space/Satellite
+    tools: ["Onshape", "Open-Rocket Simulation"],
     onshapeLink: "https://cad.onshape.com"
   },
-  {
-    id: 4,
-    title: "Project 4",
-    description: "Hydraulic-to-mechanical conversion linkage system.",
-    fullDescription: "Mechanical simulation of a landing gear retraction sequence. This project involved calculating linkage lengths to ensure over-center locking in the extended position.",
-    image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&q=80&w=800", // Placeholder: Mechanical
-    tools: ["Onshape"],
-    onshapeLink: "https://cad.onshape.com"
-  },
-  {
-    id: 5,
-    title: "Project 5",
-    description: "Regenerative cooling system for liquid rocket engines.",
-    fullDescription: "Complex helical cooling channels designed to circulate cryogenic propellant around the combustion chamber to prevent melting during high-impulse burns.",
-    image: "https://images.unsplash.com/photo-1517976487492-5750f3195933?auto=format&fit=crop&q=80&w=800", // Placeholder: Rocket
-    tools: ["Onshape"],
-    onshapeLink: "https://cad.onshape.com"
-  },
-  {
-    id: 6,
-    title: "Project 6",
-    description: "Ergonomic human-machine interface for flight decks.",
-    fullDescription: "Focused on human factors engineering, this project involved the placement of avionics displays and tactile switches based on pilot reach-zone data.",
-    image: "https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?auto=format&fit=crop&q=80&w=800", // Placeholder: Cockpit/Interior
-    tools: ["Onshape", "Fusion 360"],
-    onshapeLink: "https://cad.onshape.com"
-  }
+
+  // Add more projects as needed
 ];
 
   return (
@@ -439,45 +414,63 @@ function App() {
           
           {/* Media Work Section */}
           <div className="mb-16">
-            <h3 className="text-2xl font-semibold mb-8 text-center text-zinc-400">Media Work</h3>
-            <div className="space-y-12">
-
-              {/* 2. We 'map' over your unique projects instead of just numbers [1,2,3,4] */}
+            <h3 className="text-2xl font-semibold mb-12 text-center text-zinc-400 uppercase tracking-widest">Media Work</h3>
+            <div className="space-y-20">
               {mediaProjects.map((project, index) => (
-                <div key={project.id} className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 items-center`}>
+                <div 
+                  key={project.id} 
+                  className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 items-center`}
+                >
                   
-                  {/* Media placeholder */}
-                  <div className="w-full lg:w-1/2">
-                    <div className="aspect-video bg-zinc-800 border border-zinc-800 rounded-xl flex items-center justify-center">
-                      <div className="text-center">
-                        <div className="w-16 h-16 bg-red-900/30 text-red-500 rounded-lg flex items-center justify-center mx-auto mb-2 border border-red-500/20">
-                          <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M2 6a2 2 0 012-2h6l2 2h6a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM5 8a1 1 0 000 2h8a1 1 0 100-2H5z"/>
-                          </svg>
-                        </div>
-                        <span className="text-sm text-zinc-500">{project.title} Placeholder</span>
-                      </div>
+                  {/* Actual YouTube Video Embed */}
+                  <div className="w-full lg:w-3/5">
+                    <div className="relative w-full pb-[56.25%] h-0 bg-zinc-900 rounded-xl overflow-hidden shadow-2xl border border-zinc-800 group-hover:border-red-600/50 transition-all">
+                      <iframe
+                        className="absolute top-0 left-0 w-full h-full"
+                        src={`https://www.youtube-nocookie.com/embed/${project.youtubeId}`}
+                        title={project.title}
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                      ></iframe>
                     </div>
                   </div>
                   
                   {/* Content block */}
-                  <div className="w-full lg:w-1/2 space-y-4">
-                    <h4 className="text-xl font-semibold text-white">{project.title}</h4>
-                    <p className="text-zinc-400 leading-relaxed">{project.description}</p>
-                    <div className="flex space-x-6 text-sm">
+                  <div className="w-full lg:w-2/5 space-y-6">
+                    <div className="space-y-2">
+                      <h4 className="text-2xl font-bold text-white group-hover:text-red-500 transition-colors">
+                        {project.title}
+                      </h4>
+                      <div className="h-1 w-12 bg-red-600 rounded-full"></div>
+                    </div>
+                    
+                    <p className="text-zinc-400 leading-relaxed text-lg">
+                      {project.description}
+                    </p>
+                    
+                    <div className="flex space-x-8 text-sm font-medium">
                       <div className="flex items-center space-x-2">
-                        <Eye size={16} className="text-red-500" />
+                        <Eye size={18} className="text-red-500" />
                         <span className="text-zinc-500">{project.views} views</span>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <Heart size={16} className="text-red-500" />
+                        <Heart size={18} className="text-red-500" />
                         <span className="text-zinc-500">{project.likes} likes</span>
                       </div>
                     </div>
-                    <a href={project.link} className="inline-flex items-center space-x-2 text-red-500 hover:text-red-400">
-                      <span>View on YouTube</span>
-                      <ExternalLink size={16} />
-                    </a>
+                    
+                    <div className="pt-4">
+                      <a 
+                        href={`https://www.youtube.com/watch?v=${project.youtubeId}`}
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center space-x-2 px-6 py-3 bg-zinc-800 hover:bg-red-600 text-zinc-200 hover:text-white rounded-lg transition-all duration-300 font-bold group"
+                      >
+                        <span>View on YouTube</span>
+                        <ExternalLink size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                      </a>
+                    </div>
                   </div>
                 </div>
               ))}
