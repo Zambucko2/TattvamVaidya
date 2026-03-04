@@ -16,7 +16,6 @@ import {
   User, 
   Briefcase, 
   FolderOpen, 
-  Wrench, 
   MessageSquare,
   ChevronDown,
   MapPin,
@@ -24,8 +23,6 @@ import {
   ExternalLink,
   Eye,
   Heart,
-  Box,
-  X
 } from 'lucide-react';
 import myImage from '/media/mypicture.jpg';
 import emailjs from '@emailjs/browser';
