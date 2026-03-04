@@ -74,7 +74,7 @@ function App() {
       import.meta.env.VITE_EMAILJS_SERVICE_ID, 
       import.meta.env.VITE_EMAILJS_TEMPLATE_ID, 
       form.current,
-      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      'Oka6wG5T_QzWHqR1M'
     )
     .then(() => {
         setStatus('success');
